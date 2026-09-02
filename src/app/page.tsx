@@ -1,77 +1,39 @@
 import Image from "next/image";
-import { ArrowRight, BedDouble, CalendarCheck, Camera, CheckCircle2, Clock3, Hotel, House, Mail, MapPin, MessageCircle, Phone, Sparkles, Star, UsersRound } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, BedDouble, CalendarDays, Check, Clock3, HomeIcon, Hotel, MapPin, ShieldCheck, Sparkles, WandSparkles } from "lucide-react";
+import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { Footer } from "@/components/footer";
+import { GalleryCarousel } from "@/components/gallery-carousel";
 import { Header } from "@/components/header";
 import { QuoteForm } from "@/components/quote-form";
+import { contact, serviceAreas, services } from "@/data/site";
 
-const services = [
-  { title: "Home Cleaning", description: "Regular or deep cleaning that makes home feel lighter.", icon: House, tone: "residential" },
-  { title: "Airbnb & Short-Term Rental", description: "Reliable turnovers designed for five-star guest experiences.", icon: BedDouble, tone: "airbnb" },
-  { title: "Deep Cleaning", description: "A detailed reset for kitchens, bathrooms, living areas and bedrooms.", icon: Sparkles, tone: "commercial" },
-  { title: "Hotel Cleaning", description: "Consistent standards for rooms guests remember for the right reasons.", icon: Hotel, tone: "hotel" },
-] as const;
-
-const process = [
-  { number: "01", title: "Tell us what you need", text: "Choose a service and share the details of your space." },
-  { number: "02", title: "Receive your quote", text: "We confirm the scope, timing and price before any work begins." },
-  { number: "03", title: "Enjoy the shine", text: "Our team arrives prepared and leaves your space refreshed." },
+const featuredIcons = [HomeIcon, BedDouble, Sparkles, Hotel];
+const steps = [
+  ["01", "Share your space", "Tell us what you need, where you are and when you would like service."],
+  ["02", "Confirm your quote", "We align the scope, timing and price with you before the visit."],
+  ["03", "Enjoy the reset", "Our team handles the details so you can return to a space that feels ready."],
 ] as const;
 
 export default function Home() {
-  return (
-    <main>
-      <Header />
-      <section className="hero" id="home">
-        <Image className="heroImage" src="/images/basis-hero.png" alt="Basis Services professional cleaners caring for a Los Angeles home" fill priority sizes="100vw" />
-        <div className="heroShade" />
-        <div className="shell heroContent">
-          <p className="eyebrow"><Sparkles size={16} aria-hidden="true" /> Cleaning solutions that shine</p>
-          <h1>A cleaner space.<br /><span>A brighter life.</span></h1>
-          <p className="heroLead">Professional cleaning for homes, short-term rentals, hotels and businesses across Los Angeles.</p>
-          <div className="heroActions">
-            <a className="button buttonGold" href="#quote">Get a free quote <ArrowRight size={19} /></a>
-            <a className="button buttonGhost" href="https://wa.me/15625783263" target="_blank" rel="noreferrer"><MessageCircle size={20} /> WhatsApp us</a>
-          </div>
-          <div className="heroTrust" aria-label="Company highlights">
-            <span><Sparkles /> Detail-focused care</span><span><UsersRound /> Trusted professionals</span><span><MapPin /> Serving Los Angeles</span>
-          </div>
-        </div>
-      </section>
+  return <main><Header />
+    <section className="hero" id="home"><Image className="heroImage" src="/images/work-01.webp" alt="A polished kitchen cleaned by Basis Services" fill priority sizes="100vw" /><div className="heroOverlay" /><div className="shell heroContent"><p className="kicker"><span /> Professional cleaning across Los Angeles</p><h1>A fresh start,<br /><em>beautifully done.</em></h1><p className="heroLead">Thoughtful cleaning for homes, Airbnb properties, hotels and workplaces — delivered with care by an experienced local team.</p><div className="heroActions"><a className="button primaryButton" href="#quote">Get a free quote <ArrowRight /></a><a className="button glassButton" href={contact.whatsapp} target="_blank" rel="noreferrer"><FaWhatsapp /> Chat on WhatsApp</a></div><div className="heroFacts"><div><strong>Since 2022</strong><span>Serving with experience</span></div><div><strong>Daily</strong><span>8:00 AM–6:00 PM</span></div><div><strong>11 areas</strong><span>Across Greater LA</span></div></div></div><Image className="heroSticker" src="/images/sticker-spray.png" alt="" width={360} height={360} aria-hidden="true" /></section>
 
-      <section className="section services" id="services">
-        <div className="shell">
-          <div className="sectionHeading splitHeading"><div><p className="eyebrow">Care for every kind of space</p><h2>Cleaning that fits<br />the way you live.</h2></div><p>From recurring home care to fast rental turnovers, our service is built around your property, your schedule and your standards.</p></div>
-          <div className="serviceGrid">
-            {services.map(({ title, description, icon: Icon, tone }, index) => (
-              <article className={`serviceCard ${tone}`} key={title}><span className="serviceNumber">0{index + 1}</span><Icon className="serviceIcon" size={34} strokeWidth={1.6} /><h3>{title}</h3><p>{description}</p><a href="#quote" aria-label={`Request a quote for ${title}`}>Request this service <ArrowRight size={17} /></a></article>
-            ))}
-          </div>
-        </div>
-      </section>
+    <section className="intro section"><div className="shell introGrid"><div><p className="kicker dark"><span /> Care you can feel</p><h2>Your space deserves more than a quick clean.</h2></div><div className="introCopy"><p>Basis Services brings experienced professionals and clear communication to every visit. We shape the service around your property, schedule and priorities.</p><Link className="textLink" href="/services">Explore every service <ArrowRight /></Link></div></div></section>
 
-      <section className="section about" id="about">
-        <div className="shell aboutGrid">
-          <div className="aboutVisual"><Image src="/images/work-kitchen-2.jpg" alt="Spotless kitchen cleaned by Basis Services" fill sizes="(max-width: 800px) 100vw, 45vw" /><div className="aboutStat"><strong>Detail-first</strong><span>care, every visit</span></div></div>
-          <div className="aboutCopy"><p className="eyebrow">Why Basis Services</p><h2>Professional care.<br />Personal attention.</h2><p className="aboutIntro">A clean space changes how you feel in it. That is why we bring consistency, clear communication and genuine attention to every property we serve.</p><ul className="checkList"><li><CheckCircle2 /> Customized service for your space</li><li><CheckCircle2 /> Reliable scheduling and communication</li><li><CheckCircle2 /> Careful, detail-oriented professionals</li><li><CheckCircle2 /> Residential and commercial experience</li></ul><a className="textLink" href="#quote">Let&apos;s plan your cleaning <ArrowRight size={18} /></a></div>
-        </div>
-      </section>
+    <section className="featuredServices section" id="services"><div className="shell"><div className="sectionHead"><div><p className="kicker dark"><span /> Most requested</p><h2>Cleaning for the way you live.</h2></div><Link className="roundLink" href="/services" aria-label="View all services"><ArrowRight /></Link></div><div className="serviceGrid">{services.slice(0,4).map((service,index)=>{const Icon=featuredIcons[index];return <article className="serviceCard" key={service.slug}><span className="cardIndex">0{index+1}</span><div className="serviceIcon"><Icon /></div><h3>{service.title}</h3><p>{service.shortDescription}</p><Link href={`/services#${service.slug}`}>View details <ArrowRight /></Link></article>})}</div><div className="serviceRibbon"><Image src="/images/sticker-bucket.png" alt="" width={250} height={250} /><div><p className="kicker"><span /> More ways we help</p><strong>Windows · Carpet · Garages · Shared kitchens · Laundry & organization</strong></div><Link className="button darkButton" href="/services">See all services <ArrowRight /></Link></div></div></section>
 
-      <section className="section processSection"><div className="shell"><div className="sectionHeading centered"><p className="eyebrow">Simple from the start</p><h2>Your clean space is three steps away.</h2></div><div className="processGrid">{process.map((item, index) => <article className="processCard" key={item.number}><span>{item.number}</span>{index === 0 ? <CalendarCheck /> : index === 1 ? <MessageCircle /> : <Sparkles />}<h3>{item.title}</h3><p>{item.text}</p></article>)}</div></div></section>
+    <section className="story section"><div className="shell storyGrid"><div className="storyImage"><Image src="/images/work-03.webp" alt="Oceanfront property prepared by Basis Services" fill sizes="(max-width: 900px) 100vw, 48vw" /><span>Malibu, California</span></div><div className="storyCopy"><p className="kicker"><span /> Why Basis</p><h2>High standards.<br /><em>Human care.</em></h2><p>Since 2022, our growing team of experienced cleaners has helped homes and businesses across Greater Los Angeles feel calmer, brighter and ready for what comes next.</p><ul><li><ShieldCheck /><span><strong>Careful by nature</strong>We respect your space and pay attention to the finishing details.</span></li><li><Clock3 /><span><strong>Built around your schedule</strong>Available every day, depending on appointment availability.</span></li><li><MapPin /><span><strong>Local knowledge</strong>Serving communities from Pasadena to Malibu and Long Beach.</span></li></ul></div></div></section>
 
-      <section className="section gallery" id="gallery">
-        <div className="shell galleryGrid">
-          <div className="galleryCopy"><p className="eyebrow">The Basis standard</p><h2>Clean you can see.<br />Care you can feel.</h2><p>We focus on the details that turn a tidy room into a space that feels ready, calm and welcoming.</p><div className="rating"><div><Star fill="currentColor" /><Star fill="currentColor" /><Star fill="currentColor" /><Star fill="currentColor" /><Star fill="currentColor" /></div><span>Committed to five-star service</span></div></div>
-          <div className="galleryPanel"><div className="galleryImageWrap"><Image src="/images/work-kitchen-1.jpg" alt="Freshly cleaned luxury kitchen by Basis Services" fill sizes="(max-width: 800px) 100vw, 55vw" /></div><div className="galleryNote"><Sparkles /><span><strong>Real Basis work</strong>See more transformations on Instagram.</span></div></div>
-        </div>
-      </section>
+    <section className="work section" id="work"><div className="shell"><div className="workHead"><div><p className="kicker dark"><span /> Real Basis work</p><h2>Spaces that feel<br /><em>ready again.</em></h2></div><div><p>Every image in this gallery comes from real Basis Services projects across the Los Angeles area.</p><a href={contact.instagram} target="_blank" rel="noreferrer"><FaInstagram /> Follow {contact.instagramHandle}</a></div></div></div><GalleryCarousel /></section>
 
-      <section className="section quoteSection" id="quote">
-          <div className="shell quoteGrid"><div className="quoteCopy"><p className="eyebrow">Request your cleaning</p><h2>Ready for a space<br />that truly shines?</h2><p>Tell us a little about what you need. We&apos;ll follow up to confirm availability and prepare your free, no-obligation quote.</p><div className="contactList"><a href="tel:+15625783263"><Phone /><span><small>Call or WhatsApp</small>+1 (562) 578-3263</span></a><a href="mailto:basisserv@gmail.com"><Mail /><span><small>Email us</small>basisserv@gmail.com</span></a><a href="https://www.instagram.com/basisservicess/" target="_blank" rel="noreferrer"><Camera /><span><small>Follow our work</small>@basisservicess</span></a><div><MapPin /><span><small>Service area</small>Los Angeles and surrounding areas</span></div><div><Clock3 /><span><small>Response time</small>We&apos;ll get back to you as soon as possible</span></div></div></div><QuoteForm /></div>
-      </section>
+    <section className="beforeAfter section"><div className="shell"><div className="sectionHead compact"><div><p className="kicker dark"><span /> The visible difference</p><h2>Before the reset.<br /><em>After the care.</em></h2></div><p className="sectionNote">Representative moments from Basis Services visits show the conditions our team handles and the polished standard we work toward.</p></div><div className="comparisonGrid"><article><div className="comparisonImage"><Image src="/images/gallery-07.jpg" alt="Stove before a deep cleaning service" fill sizes="(max-width: 700px) 100vw, 50vw" /><span>Before</span></div><h3>Built-up kitchen details</h3><p>Deep cleaning reaches the areas a regular reset can leave behind.</p></article><article><div className="comparisonImage"><Image src="/images/work-14.webp" alt="Kitchen after professional cleaning care" fill sizes="(max-width: 700px) 100vw, 50vw" /><span className="after">After</span></div><h3>The Basis finish</h3><p>Clean surfaces, calmer rooms and a space that feels ready again.</p></article></div></div></section>
 
-      <footer className="footer" id="contact">
-        <div className="shell footerTop"><div className="footerBrand"><div className="footerLogo"><Image src="/images/basis-logo-official.jpg" alt="Basis Services" width={112} height={112} /><span><strong>BASIS</strong><small>SERVICES</small></span></div><p>Cleaning solutions that shine across Los Angeles.</p></div><div><h3>Services</h3><a href="#services">Home cleaning</a><a href="#services">Airbnb cleaning</a><a href="#services">Deep cleaning</a><a href="#services">Hotels</a></div><div><h3>Contact</h3><a href="tel:+15625783263">+1 (562) 578-3263</a><a href="mailto:basisserv@gmail.com">basisserv@gmail.com</a><a href="https://www.instagram.com/basisservicess/" target="_blank" rel="noreferrer">@basisservicess</a><span>Los Angeles, California</span></div></div>
-        <div className="shell footerBottom"><span>© {new Date().getFullYear()} Basis Services. All rights reserved.</span><span>Website by BYTHE</span></div>
-      </footer>
-    </main>
-  );
+    <section className="process section"><div className="shell"><div className="sectionHead"><div><p className="kicker"><span /> Simple from the start</p><h2>Three steps to<br /><em>a brighter space.</em></h2></div><Image src="/images/sticker-towels.png" alt="" width={230} height={230} /></div><div className="steps">{steps.map(([number,title,text],index)=><article key={number}><span>{number}</span>{index===0?<CalendarDays/>:index===1?<Check/>:<WandSparkles/>}<h3>{title}</h3><p>{text}</p></article>)}</div></div></section>
+
+    <section className="areas section" id="areas"><div className="shell areasGrid"><div><p className="kicker dark"><span /> Where we work</p><h2>From the city<br />to the coast.</h2><p>Professional cleaning throughout Greater Los Angeles, with service scheduled according to location and availability.</p><a className="button darkButton" href="#quote">Check availability <ArrowRight /></a></div><div className="areaList">{serviceAreas.map((area,index)=><span key={area}><small>{String(index+1).padStart(2,"0")}</small>{area}</span>)}</div></div></section>
+
+    <section className="quoteSection section" id="quote"><div className="shell quoteGrid"><div className="quoteCopy"><p className="kicker"><span /> Let’s plan your cleaning</p><h2>Tell us what<br /><em>your space needs.</em></h2><p>Request a free estimate and our team will follow up to confirm the scope, timing and availability.</p><div className="directContacts"><a href={contact.whatsapp} target="_blank" rel="noreferrer"><FaWhatsapp /><span><small>WhatsApp</small>{contact.phoneDisplay}</span></a><a href={contact.instagram} target="_blank" rel="noreferrer"><FaInstagram /><span><small>Instagram</small>{contact.instagramHandle}</span></a></div></div><QuoteForm /></div></section>
+    <Footer />
+  </main>;
 }

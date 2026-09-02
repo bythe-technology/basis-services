@@ -4,9 +4,11 @@ Official landing page for Basis Services, a professional cleaning company servin
 
 ## Included
 
-- Responsive English-language landing page
-- Home, Airbnb, deep cleaning, and hotel services
-- Authentic Basis Services work photos and official brand logo
+- Responsive English-language home and services pages
+- Ten cleaning categories with service details and direct quote links
+- Fifteen authentic Basis Services work photos and official brand logo
+- Accessible, touch-friendly autoplay gallery
+- Representative before-and-after section
 - WhatsApp quote flow with prefilled customer details
 - Phone, email, Instagram, and service-area contact details
 - SEO and social-sharing metadata

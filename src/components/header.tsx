@@ -1,9 +1,19 @@
 "use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useState } from "react";
-const links = [["Home", "#home"], ["Services", "#services"], ["About", "#about"], ["Gallery", "#gallery"], ["Contact", "#contact"]] as const;
+import { useEffect, useState } from "react";
+import { FaWhatsapp } from "react-icons/fa";
+import { contact } from "@/data/site";
+
 export function Header() {
   const [open, setOpen] = useState(false);
-  return <header className="header"><div className="shell headerInner"><a className="brand" href="#home" aria-label="Basis Services home"><Image src="/images/basis-logo-official.jpg" alt="Basis Services" width={96} height={96} priority /><span><strong>BASIS</strong><small>SERVICES</small></span></a><nav className={open ? "nav open" : "nav"} aria-label="Main navigation">{links.map(([label, href]) => <a href={href} key={href} onClick={() => setOpen(false)}>{label}</a>)}<a className="button buttonGold navCta" href="#quote" onClick={() => setOpen(false)}>Get a free quote</a></nav><button className="menuButton" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return <header className={`floatingHeader ${scrolled ? "isScrolled" : ""}`}><div className="headerInner"><Link className="brand" href="/" aria-label="Basis Services home" onClick={() => setOpen(false)}><Image src="/images/basis-logo-official.jpg" alt="" width={56} height={56} priority /><span><strong>BASIS</strong><small>SERVICES</small></span></Link><nav className={open ? "nav open" : "nav"} aria-label="Main navigation"><Link href="/" onClick={() => setOpen(false)}>Home</Link><Link href="/services" onClick={() => setOpen(false)}>Services</Link><Link href="/#work" onClick={() => setOpen(false)}>Our work</Link><Link href="/#areas" onClick={() => setOpen(false)}>Areas</Link><Link href="/#quote" onClick={() => setOpen(false)}>Contact</Link><a className="headerCta" href={`${contact.whatsapp}?text=${encodeURIComponent("Hi Basis Services! I'd like a free cleaning quote.")}`} target="_blank" rel="noreferrer"><FaWhatsapp /> Free quote</a></nav><button className="menuButton" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
 }

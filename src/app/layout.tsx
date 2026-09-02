@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import { Manrope, Montserrat } from "next/font/google";
+import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
-const manrope = Manrope({ variable: "--font-body", subsets: ["latin"] });
-const montserrat = Montserrat({ variable: "--font-display", subsets: ["latin"] });
-export const metadata: Metadata = { title: "Basis Services | Professional Cleaning in Los Angeles", description: "Professional residential, Airbnb, commercial and hotel cleaning services in Los Angeles. Request your free quote today.", keywords: ["Los Angeles cleaning services", "residential cleaning", "Airbnb cleaning", "commercial cleaning", "hotel cleaning"], openGraph: { title: "A cleaner space. A brighter life.", description: "Professional cleaning services across Los Angeles.", type: "website", images: ["/images/basis-hero.png"] }, twitter: { card: "summary_large_image", title: "Basis Services", description: "Cleaning solutions that shine across Los Angeles.", images: ["/images/basis-hero.png"] } };
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en" className={`${manrope.variable} ${montserrat.variable}`}><body>{children}</body></html>; }
+const body = DM_Sans({ variable: "--font-body", subsets: ["latin"], display: "swap" });
+const display = Cormorant_Garamond({ variable: "--font-display", subsets: ["latin"], weight: ["500", "600", "700"], display: "swap" });
+export const metadata: Metadata = { metadataBase: new URL("https://basisserv.com"), title: "Basis Services | Professional Cleaning in Los Angeles", description: "Professional home, Airbnb, hotel, office and deep cleaning across Greater Los Angeles. Request your free quote on WhatsApp.", keywords: ["Los Angeles cleaning services", "home cleaning", "Airbnb cleaning", "hotel cleaning", "deep cleaning"], openGraph: { title: "A fresh start, beautifully done.", description: "Professional cleaning with genuine care across Greater Los Angeles.", type: "website", images: ["/images/work-01.webp"] }, twitter: { card: "summary_large_image", title: "Basis Services", description: "Professional cleaning with genuine care across Greater Los Angeles.", images: ["/images/work-01.webp"] } };
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="en" className={`${body.variable} ${display.variable}`}><body>{children}</body></html>; }
