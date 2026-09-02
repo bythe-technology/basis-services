@@ -6,7 +6,12 @@ import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { contact, services } from "@/data/site";
 
-export const metadata: Metadata = { title:"Cleaning Services in Los Angeles | Basis Services", description:"Explore home, Airbnb, hotel, office, deep cleaning, windows, carpet, garage, shared kitchen, laundry and organization services." };
+export const metadata: Metadata = {
+  title: "Cleaning Services in Los Angeles",
+  description: "Explore home, Airbnb, hotel, office, deep cleaning, windows, carpet, garage, shared kitchen, laundry and organization services in Greater Los Angeles.",
+  alternates: { canonical: "/services" },
+  openGraph: { title: "Cleaning Services in Los Angeles | Basis Services", url: "/services", images: [{ url: "/images/work-20.webp", alt: "Bright living space professionally cleaned by Basis Services" }] },
+};
 
 const icons: Record<(typeof services)[number]["icon"], LucideIcon> = { home:HomeIcon, airbnb:BedDouble, hotel:Hotel, office:Building2, garage:Car, window:SprayCan, carpet:Layers3, kitchen:CookingPot, deep:Sparkles, laundry:Shirt };
 
