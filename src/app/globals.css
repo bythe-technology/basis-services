@@ -6,3 +6,45 @@
 :focus-visible{outline:3px solid var(--lime);outline-offset:3px}
 .brand,.footerLogo{display:flex;align-items:center}.brand img{width:70px;height:70px;border-radius:0;object-fit:contain;filter:drop-shadow(0 2px 7px rgba(0,0,0,.22));transition:width .25s,height .25s}.isScrolled .brand img{width:60px;height:60px}.footerLogo img{width:150px;height:150px;border-radius:0;object-fit:contain;object-position:left center}
 @media(max-width:820px){.brand img{width:62px;height:62px}}
+
+@media(prefers-reduced-motion:no-preference){
+	@keyframes rise-in{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+	@keyframes soft-zoom{from{transform:scale(1.04)}to{transform:scale(1)}}
+	.heroImage,.servicesHero>img{animation:soft-zoom 1.4s cubic-bezier(.2,.7,.2,1) both}
+	.heroContent>*{opacity:0;animation:rise-in .7s cubic-bezier(.2,.7,.2,1) both}
+	.heroContent .kicker{animation-delay:.12s}.heroContent h1{animation-delay:.2s}.heroContent .heroLead{animation-delay:.3s}.heroContent .heroActions{animation-delay:.4s}.heroContent .heroFacts{animation-delay:.5s}
+	.servicesHero .shell>*{opacity:0;animation:rise-in .7s cubic-bezier(.2,.7,.2,1) both}
+	.servicesHero .kicker{animation-delay:.12s}.servicesHero h1{animation-delay:.2s}.servicesHero .shell>p:not(.kicker){animation-delay:.3s}.servicesHero .button{animation-delay:.4s}
+	.serviceCard,.steps article,.detailedServices>article{transition:transform .35s ease,box-shadow .35s ease}
+	.serviceCard:hover,.steps article:hover,.detailedServices>article:hover{transform:translateY(-6px)}
+	.gallerySlide img{transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+	.gallerySlide:hover img{transform:scale(1.04)}
+}
+
+/* Responsive polish for the first viewport and touch navigation. */
+.heroSticker,.serviceRibbon img,.process .sectionHead>img,.servicesCta>img{pointer-events:none}
+.nav{box-shadow:0 18px 40px rgba(0,0,0,.22)}
+.servicesHero .shell{position:relative;z-index:1}
+.hero,.servicesHero{overflow:hidden}
+
+@media(max-width:600px){
+	.heroContent{padding-bottom:34px}
+	.heroLead{max-width:33rem;line-height:1.65}
+	.heroActions .button{width:100%}
+	.servicesHero{padding-top:150px}
+	.servicesHero .kicker{max-width:100%;line-height:1.45}
+	.servicesHero> .shell > p:not(.kicker){max-width:34rem;line-height:1.65}
+	.allServices{padding-top:78px}
+	.servicesIntro{gap:20px}
+	.servicesIntro>p{font-size:.7rem;letter-spacing:.15em}
+	.detailedServices>article{padding:30px 0}
+	.serviceTitle{position:relative;grid-template-columns:58px minmax(0,1fr);gap:18px;padding-left:0;align-items:start}
+	.serviceTitle>small{position:absolute;left:0;top:4px}
+	.serviceTitle .serviceIcon{margin-left:28px}
+	.serviceTitle>div:last-child{min-width:0}
+	.serviceTitle h3{line-height:1;overflow-wrap:anywhere}
+	.serviceTitle p{max-width:34rem;line-height:1.55}
+	.serviceDetails{padding-left:46px}
+	.serviceDetails a{width:100%;justify-content:center}
+	.nav{box-shadow:0 20px 44px rgba(0,0,0,.34)}
+}
