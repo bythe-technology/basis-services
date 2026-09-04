@@ -61,6 +61,7 @@ export function Hero() {
           alt="A bright kitchen cleaned by Basis Services"
           fill
           priority
+          quality={78}
           sizes="(max-width: 1023px) 100vw, 48vw"
         />
         <figcaption>

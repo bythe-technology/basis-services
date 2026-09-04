@@ -1,0 +1,62 @@
+/* Preserve the existing motion direction with selectors for the refreshed layout. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes rise-in {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes soft-zoom {
+    from {
+      transform: scale(1.025);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  .heroPhoto img,
+  .servicesHeroPhoto img {
+    animation: soft-zoom 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .heroContent > *,
+  .servicesHero > div > * {
+    animation: rise-in 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .heroContent h1,
+  .servicesHero h1 {
+    animation-delay: 0.06s;
+  }
+  .heroContent .heroLead,
+  .servicesHero > div > p:not(.kicker) {
+    animation-delay: 0.12s;
+  }
+  .heroActions,
+  .servicesHero .button {
+    animation-delay: 0.18s;
+  }
+  .heroFacts {
+    animation-delay: 0.24s;
+  }
+  .serviceCard,
+  .steps article {
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  .serviceCard:hover,
+  .steps article:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 32px #36543a12;
+  }
+  .gallerySlide img {
+    transition: transform 0.45s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  .gallerySlide:hover img {
+    transform: scale(1.025);
+  }
+}

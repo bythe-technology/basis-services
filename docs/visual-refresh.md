@@ -17,6 +17,7 @@
 - Styles are separated by responsibility under src/styles; globals.css only imports them in order.
 - Removed the unused embla-carousel-autoplay dependency. Embla remains for accessible manual navigation and drag.
 - Bythe SVG copied unchanged from the reference project pratika-sport/public/images/bythe-logo.svg; credit links to https://bythe.tech.
+- Integrated remote commit 95a72fa: retained AVIF/WebP output, allowed and applied hero quality 78, and adapted entrance/hover animations to the refreshed components. Old responsive overrides were superseded by the tested responsive stylesheet; all motion remains disabled for reduced-motion preference.
 
 ## Verification — 2026-09-04
 
@@ -65,4 +66,3 @@ Use case: stylized-concept. Asset type: decorative transparent PNG cutout for a 
 ## Performance and limitations
 
 Most content remains static server-rendered HTML. Only three interaction components hydrate. Decoration assets total about 72KB before Next image optimization; offscreen photography is lazy-loaded. The photo gallery remains the main potential bandwidth cost. No production Lighthouse/Core Web Vitals result is claimed from the development server.
-
