@@ -3,17 +3,82 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { contact } from "@/data/site";
 
+const links = [
+  ["/", "Home"],
+  ["/services", "Services"],
+  ["/#work", "Our work"],
+  ["/#areas", "Areas"],
+  ["/#quote", "Contact"],
+] as const;
+
 export function Header() {
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    onScroll(); window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-  return <header className={`floatingHeader ${scrolled ? "isScrolled" : ""}`}><div className="headerInner"><Link className="brand" href="/" aria-label="Basis Services home" onClick={() => setOpen(false)}><Image src="/brand/basis-logo-header.png" alt="Basis Services" width={720} height={694} priority /></Link><nav className={open ? "nav open" : "nav"} aria-label="Main navigation"><Link href="/" onClick={() => setOpen(false)}>Home</Link><Link href="/services" onClick={() => setOpen(false)}>Services</Link><Link href="/#work" onClick={() => setOpen(false)}>Our work</Link><Link href="/#areas" onClick={() => setOpen(false)}>Areas</Link><Link href="/#quote" onClick={() => setOpen(false)}>Contact</Link><a className="headerCta" href={`${contact.whatsapp}?text=${encodeURIComponent("Hi Basis Services! I'd like a free cleaning quote.")}`} target="_blank" rel="noreferrer"><FaWhatsapp /> Free quote</a></nav><button className="menuButton" type="button" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button></div></header>;
+  const menuButton = useRef<HTMLButtonElement>(null);
+  function closeMenu(returnFocus = false) {
+    setOpen(false);
+    if (returnFocus) menuButton.current?.focus();
+  }
+  return (
+    <header
+      className="floatingHeader"
+      onKeyDown={(event) => {
+        if (event.key === "Escape" && open) {
+          event.preventDefault();
+          closeMenu(true);
+        }
+      }}
+    >
+      <div className="headerInner">
+        <Link
+          className="brand"
+          href="/"
+          aria-label="Basis Services home"
+          onClick={() => closeMenu()}
+        >
+          <Image
+            src="/brand/basis-logo-header.png"
+            alt="Basis Services"
+            width={720}
+            height={694}
+            priority
+            sizes="84px"
+          />
+        </Link>
+        <nav
+          id="main-navigation"
+          className={open ? "nav open" : "nav"}
+          aria-label="Main navigation"
+        >
+          {links.map(([href, label]) => (
+            <Link href={href} key={href} onClick={() => closeMenu()}>
+              {label}
+            </Link>
+          ))}
+          <a
+            className="headerCta"
+            href={contact.whatsapp}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <FaWhatsapp /> Free quote
+          </a>
+        </nav>
+        <button
+          ref={menuButton}
+          className="menuButton"
+          type="button"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="main-navigation"
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
+      </div>
+    </header>
+  );
 }

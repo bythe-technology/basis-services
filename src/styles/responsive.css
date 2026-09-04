@@ -1,0 +1,325 @@
+@media (min-width: 1024px) and (max-width: 1190px) {
+  .hero {
+    gap: 32px;
+  }
+  .hero h1 {
+    font-size: 4rem;
+  }
+  .nav {
+    gap: 18px;
+  }
+  .quoteGrid {
+    gap: 32px;
+  }
+  .quoteForm {
+    padding: 28px;
+  }
+  .footerGrid {
+    gap: 24px;
+  }
+}
+@media (max-width: 1023px) {
+  .floatingHeader {
+    top: 12px;
+    left: 20px;
+    right: 20px;
+  }
+  .headerInner {
+    height: 84px;
+    padding: 8px 18px;
+  }
+  .brand img {
+    width: 68px;
+    height: 64px;
+  }
+  .menuButton {
+    display: flex;
+  }
+  .nav {
+    display: none;
+    position: absolute;
+    top: 94px;
+    left: 0;
+    right: 0;
+    background: #17241b;
+    border: 1px solid #52604b;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: var(--shadow);
+  }
+  .nav.open {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .nav > a {
+    padding: 10px;
+  }
+  .hero,
+  .servicesHero {
+    padding-top: 140px;
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .heroContent {
+    max-width: 740px;
+  }
+  .hero h1 {
+    font-size: clamp(3.6rem, 8vw, 5.2rem);
+  }
+  .hero h1 em {
+    display: inline;
+  }
+  .heroPhoto {
+    min-height: 0;
+    height: 520px;
+    border-radius: 90px 90px 24px 24px;
+  }
+  .heroLead {
+    max-width: 650px;
+  }
+  .serviceGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .serviceRibbon {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+  .sectionHead {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .sectionHead h2 {
+    max-width: 720px;
+  }
+  .sectionHead > p,
+  .sectionHead > div > p:not(.kicker) {
+    max-width: 640px;
+  }
+  .storyGrid,
+  .areasGrid,
+  .quoteGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .storyImage {
+    height: 480px;
+  }
+  .storyCopy {
+    max-width: 740px;
+  }
+  .gallerySlide {
+    flex-basis: 60%;
+    height: 480px;
+  }
+  .detailGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .detailGrid article:last-child {
+    grid-column: 1/-1;
+    max-width: calc(50% - 12px);
+  }
+  .steps {
+    gap: 16px;
+  }
+  .steps article {
+    padding: 24px;
+  }
+  .steps h3 {
+    font-size: 1.65rem;
+  }
+  .quoteCopy {
+    max-width: 660px;
+  }
+  .quoteForm {
+    max-width: 760px;
+    width: 100%;
+  }
+  .footerGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  .servicesHeroPhoto {
+    height: 420px;
+  }
+  .serviceIndex {
+    grid-template-columns: 1fr 1fr;
+  }
+  .detailedServices > article {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+@media (max-width: 639px) {
+  .shell {
+    width: calc(100% - 40px);
+  }
+  .section {
+    padding: 64px 0;
+  }
+  .floatingHeader {
+    left: 12px;
+    right: 12px;
+  }
+  .headerInner {
+    padding-inline: 14px;
+    border-radius: 20px;
+  }
+  .hero,
+  .servicesHero {
+    padding-top: 128px;
+    padding-bottom: 48px;
+    gap: 32px;
+  }
+  .hero h1,
+  .servicesHero h1 {
+    font-size: clamp(2.9rem, 11.5vw, 4rem);
+  }
+  h2 {
+    font-size: 2.65rem;
+  }
+  .kicker {
+    font-size: 0.69rem;
+    letter-spacing: 0.09em;
+  }
+  .heroLead {
+    font-size: 1rem;
+  }
+  .heroActions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .heroFacts {
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .heroFacts strong {
+    font-size: 0.8rem;
+  }
+  .heroFacts span {
+    font-size: 0.7rem;
+  }
+  .heroPhoto {
+    height: 380px;
+    border-radius: 60px 60px 20px 20px;
+  }
+  .heroPhoto figcaption {
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    font-size: 0.8rem;
+  }
+  .serviceGrid,
+  .detailGrid,
+  .steps {
+    grid-template-columns: 1fr;
+  }
+  .detailGrid article:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+  .serviceCard {
+    padding: 26px;
+  }
+  .serviceRibbon {
+    padding: 26px;
+  }
+  .storyImage {
+    height: 390px;
+  }
+  .galleryCarousel {
+    width: calc(100% - 20px);
+  }
+  .gallerySlide {
+    flex-basis: 84%;
+    height: 420px;
+  }
+  .galleryControls {
+    gap: 10px;
+    padding-inline: 10px;
+    flex-wrap: wrap;
+  }
+  .galleryStatus {
+    order: 3;
+    width: 100%;
+  }
+  .gallerySlide figcaption {
+    left: 18px;
+    right: 18px;
+    font-size: 0.8rem;
+  }
+  .detailGrid {
+    gap: 32px;
+  }
+  .detailImage {
+    height: 350px;
+  }
+  .areaList {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .areaList span {
+    padding: 12px 10px;
+    font-size: 0.8rem;
+    gap: 7px;
+  }
+  .quoteForm {
+    padding: 26px 20px;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  .formTop h3 {
+    font-size: 1.9rem;
+  }
+  .footerGrid {
+    gap: 32px 20px;
+  }
+  .footerBrand {
+    grid-column: 1/-1;
+  }
+  .footerGrid > div:last-child {
+    grid-column: 1/-1;
+  }
+  .footerBottom {
+    flex-direction: column;
+  }
+  .servicesHeroPhoto {
+    height: 340px;
+    border-radius: 60px 60px 20px 20px;
+  }
+  .serviceIndex {
+    grid-template-columns: 1fr;
+  }
+  .serviceTitle {
+    gap: 14px;
+  }
+  .serviceTitle h3 {
+    font-size: 1.9rem;
+  }
+  .serviceTitle .serviceIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+  }
+  .processDecoration {
+    gap: 16px;
+  }
+  .decoration {
+    width: 120px;
+    height: 120px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

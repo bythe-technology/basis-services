@@ -1,0 +1,87 @@
+.work {
+  background: var(--cream);
+}
+.galleryCarousel {
+  width: min(1440px, calc(100% - 40px));
+  margin: auto;
+}
+.galleryViewport {
+  overflow: hidden;
+  border-radius: 24px;
+}
+.galleryTrack {
+  display: flex;
+  gap: 18px;
+  touch-action: pan-y pinch-zoom;
+}
+.gallerySlide {
+  position: relative;
+  flex: 0 0 36%;
+  min-width: 0;
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--sage);
+}
+.gallerySlide img {
+  object-fit: cover;
+}
+.gallerySlide:after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(transparent, #10170ae6);
+}
+.gallerySlide figcaption {
+  position: absolute;
+  z-index: 1;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  color: white;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 12px;
+  align-items: start;
+}
+.gallerySlide figcaption span {
+  color: #d4f29a;
+  font-weight: 700;
+}
+.galleryControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 24px auto 0;
+  width: min(1180px, 100%);
+}
+.galleryArrows {
+  display: flex;
+  gap: 8px;
+}
+.galleryArrows button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #7b8774;
+  background: var(--paper);
+  color: var(--green);
+  display: grid;
+  place-items: center;
+}
+.galleryArrows button:hover {
+  background: var(--sage);
+}
+.galleryArrows svg {
+  width: 20px;
+}
+.galleryStatus {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.galleryCount {
+  font-size: 0.85rem;
+  color: var(--green);
+  white-space: nowrap;
+}

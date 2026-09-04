@@ -1,0 +1,182 @@
+.story {
+  background: var(--sage);
+}
+.storyGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.storyImage {
+  position: relative;
+  height: 570px;
+  border-radius: 24px;
+  overflow: hidden;
+}
+.storyImage img {
+  object-fit: cover;
+}
+.storyCopy > p:not(.kicker) {
+  color: var(--muted);
+  margin-top: 24px;
+}
+.storyCopy ul {
+  list-style: none;
+  display: grid;
+  gap: 26px;
+  margin-top: 32px;
+}
+.storyCopy li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.storyCopy li > svg {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  color: var(--green);
+  margin-top: 3px;
+}
+.storyCopy li h3 {
+  font-family: var(--font-body), sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+.storyCopy li p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.workDetails {
+  background: var(--paper);
+}
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.detailImage {
+  position: relative;
+  height: 340px;
+  border-radius: 24px;
+  overflow: hidden;
+  background: var(--sage);
+}
+.detailImage img {
+  object-fit: cover;
+}
+.detailGrid h3 {
+  margin: 24px 0 12px;
+  font-size: 1.8rem;
+}
+.detailGrid p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.process {
+  background: var(--cream);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.steps article {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--paper);
+}
+.stepTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  color: var(--green);
+}
+.stepTop svg {
+  width: 28px;
+  height: 28px;
+}
+.stepTop span {
+  font-size: 0.8rem;
+}
+.steps h3 {
+  margin-bottom: 16px;
+}
+.steps p {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+.areas {
+  background: var(--paper);
+}
+.areasGrid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 80px;
+  align-items: center;
+}
+.areasGrid > div > p:not(.kicker) {
+  margin: 24px 0;
+  color: var(--muted);
+}
+.areaList {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.areaList span {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px;
+  background: var(--cream);
+  border-radius: 12px;
+  color: var(--green);
+  font-size: 0.9rem;
+}
+.areaList svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.quoteSection {
+  background: var(--sage);
+}
+.quoteGrid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 64px;
+  align-items: start;
+}
+.quoteCopy > p:not(.kicker) {
+  margin-top: 24px;
+  color: var(--muted);
+}
+.directContacts {
+  display: grid;
+  gap: 12px;
+  margin-top: 30px;
+}
+.directContacts a {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 52px;
+  color: var(--green);
+}
+.directContacts svg {
+  width: 24px;
+  height: 24px;
+}
+.directContacts span {
+  font-size: 0.9rem;
+}
+.directContacts small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.75rem;
+}

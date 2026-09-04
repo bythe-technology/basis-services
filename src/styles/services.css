@@ -1,0 +1,115 @@
+.servicesHero {
+  padding-top: 168px;
+  padding-bottom: 64px;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+}
+.servicesHero h1 {
+  margin-bottom: 24px;
+}
+.servicesHero p:not(.kicker) {
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+.servicesHeroPhoto {
+  position: relative;
+  height: 480px;
+  border-radius: 100px 100px 24px 24px;
+  overflow: hidden;
+}
+.servicesHeroPhoto img {
+  object-fit: cover;
+}
+.allServices {
+  background: var(--paper);
+}
+.serviceIndex {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 48px;
+}
+.serviceIndex a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 14px 16px;
+  min-height: 52px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--green);
+  font-size: 0.875rem;
+  background: var(--cream);
+}
+.serviceIndex a:hover {
+  background: var(--sage);
+}
+.serviceIndex svg {
+  width: 16px;
+}
+.detailedServices > article {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  padding: 48px 0;
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 136px;
+}
+.serviceTitle {
+  display: flex;
+  gap: 20px;
+}
+.serviceTitle h3 {
+  font-size: 2.1rem;
+  margin: 8px 0 16px;
+}
+.serviceTitle p {
+  color: var(--muted);
+}
+.serviceDetails {
+  display: grid;
+  gap: 22px;
+}
+.serviceDetails > div > span {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  font-weight: 700;
+}
+.serviceDetails > div > p {
+  margin-top: 7px;
+}
+.serviceDetails ul {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+}
+.serviceDetails li {
+  display: flex;
+  gap: 10px;
+  color: var(--muted);
+}
+.serviceDetails li svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--green);
+  margin-top: 4px;
+}
+.servicesCta {
+  background: var(--sage);
+  text-align: center;
+}
+.servicesCta h2 {
+  max-width: 740px;
+  margin: 0 auto 24px;
+}
+.servicesCta p:not(.kicker) {
+  max-width: 560px;
+  margin: 0 auto 28px;
+  color: var(--muted);
+}
