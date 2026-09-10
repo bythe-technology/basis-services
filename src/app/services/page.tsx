@@ -4,6 +4,7 @@ import { ArrowRight, Check } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
+import { CleaningChecklists } from "@/components/cleaning-checklists";
 import { ServiceIcon } from "@/components/service-icon";
 import { contact, services } from "@/data/site";
 
@@ -77,6 +78,7 @@ export default function ServicesPage() {
                 </a>
               ))}
             </nav>
+            <CleaningChecklists />
             <div className="detailedServices">
               {services.map((service) => (
                 <article id={service.slug} key={service.slug}>

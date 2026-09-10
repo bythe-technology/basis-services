@@ -147,6 +147,18 @@
   .serviceIndex {
     grid-template-columns: 1fr 1fr;
   }
+  .cleaningChecklists {
+    padding: 36px;
+  }
+  .checklistIntro,
+  .checklistPlanHead {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    align-items: start;
+  }
+  .checklistGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
   .detailedServices > article {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -292,6 +304,34 @@
   }
   .serviceIndex {
     grid-template-columns: 1fr;
+  }
+  .cleaningChecklists {
+    margin-inline: -8px;
+    margin-bottom: 56px;
+    padding: 28px 18px;
+    border-radius: 24px;
+  }
+  .checklistTabs {
+    display: grid;
+    width: 100%;
+  }
+  .checklistTabs button {
+    padding-inline: 12px;
+    font-size: 0.82rem;
+  }
+  .checklistPlanHead h3 {
+    font-size: 2rem;
+  }
+  .checklistGrid {
+    grid-template-columns: 1fr;
+  }
+  .checklistGrid article {
+    padding: 22px 18px;
+  }
+  .checklistGrid .finalCheckCard {
+    grid-column: auto;
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
   .serviceTitle {
     gap: 14px;
