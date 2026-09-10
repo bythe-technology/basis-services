@@ -4,8 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { useRef, useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
-import { contact } from "@/data/site";
 
 const links = [
   ["/", "Home"],
@@ -58,14 +56,12 @@ export function Header() {
               {label}
             </Link>
           ))}
-          <a
+          <Link
             className="headerCta"
-            href={contact.whatsapp}
-            target="_blank"
-            rel="noreferrer"
+            href="/#quote"
           >
-            <FaWhatsapp /> Free quote
-          </a>
+            Free quote
+          </Link>
         </nav>
         <button
           ref={menuButton}

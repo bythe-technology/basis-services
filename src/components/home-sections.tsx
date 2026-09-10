@@ -8,8 +8,9 @@ import {
   MapPin,
   ShieldCheck,
   WandSparkles,
+  MessageSquareText,
 } from "lucide-react";
-import { FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram } from "react-icons/fa";
 import { contact, serviceAreas, services } from "@/data/site";
 import { GalleryCarousel } from "@/components/gallery-carousel";
 import { QuoteForm } from "@/components/quote-form";
@@ -33,11 +34,9 @@ export function Hero() {
           </a>
           <a
             className="button secondaryButton"
-            href={contact.whatsapp}
-            target="_blank"
-            rel="noreferrer"
+            href={contact.sms}
           >
-            <FaWhatsapp /> Chat on WhatsApp
+            <MessageSquareText /> Text us about your space
           </a>
         </div>
         <div className="heroFacts">
@@ -363,10 +362,10 @@ export function QuoteSection() {
             availability with you personally.
           </p>
           <div className="directContacts">
-            <a href={contact.whatsapp} target="_blank" rel="noreferrer">
-              <FaWhatsapp />
+            <a href={contact.sms}>
+              <MessageSquareText />
               <span>
-                <small>WhatsApp</small>
+                <small>Text message</small>
                 {contact.phoneDisplay}
               </span>
             </a>

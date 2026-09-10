@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { ArrowRight, Check } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { MessageSquareText } from "lucide-react";
 import { Footer } from "@/components/footer";
 import { Header } from "@/components/header";
 import { CleaningChecklists } from "@/components/cleaning-checklists";
@@ -105,7 +105,7 @@ export default function ServicesPage() {
                     <a
                       className="textLink"
                       href={
-                        contact.whatsapp +
+                        contact.sms +
                         "?text=" +
                         encodeURIComponent(
                           "Hi Basis Services! I'd like a quote for " +
@@ -116,7 +116,7 @@ export default function ServicesPage() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <FaWhatsapp /> Request this service <ArrowRight />
+                      <MessageSquareText /> Request this service <ArrowRight />
                     </a>
                   </div>
                 </article>
@@ -131,16 +131,14 @@ export default function ServicesPage() {
               Show us your space. <em>We’ll guide you.</em>
             </h2>
             <p>
-              Send a few details on WhatsApp and our team will help define the
+              Send a few details by text and our team will help define the
               right cleaning scope.
             </p>
             <a
               className="button primaryButton"
-              href={contact.whatsapp}
-              target="_blank"
-              rel="noreferrer"
+              href={contact.sms}
             >
-              <FaWhatsapp /> Talk to Basis Services
+              <MessageSquareText /> Text Basis Services
             </a>
           </div>
         </section>

@@ -1,8 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowUpRight } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import { ArrowUpRight, MessageSquareText } from "lucide-react";
 import { contact, services } from "@/data/site";
 import {
   buildQuoteMessage,
@@ -86,7 +85,7 @@ export function QuoteForm() {
       return;
     }
     const url =
-      contact.whatsapp +
+      contact.sms +
       "?text=" +
       encodeURIComponent(buildQuoteMessage(fields));
     setReadyUrl(url);
@@ -223,21 +222,21 @@ export function QuoteForm() {
         </Field>
       </details>
       <button className="button primaryButton formSubmit" type="submit">
-        <FaWhatsapp /> Prepare my quote request <ArrowUpRight />
+        <MessageSquareText /> Prepare my text request <ArrowUpRight />
       </button>
       {readyUrl && (
         <div className="formSuccess" role="status">
           <p>
-            Your message is prepared. Please press Send in WhatsApp to submit
-            your request.
+            Your message is prepared. Please press Send in your messages app to
+            submit your request.
           </p>
           <a href={readyUrl} target="_blank" rel="noreferrer">
-            Open prepared message in WhatsApp <ArrowUpRight />
+            Open prepared message in Messages <ArrowUpRight />
           </a>
         </div>
       )}
       <small>
-        Opens WhatsApp in a new tab. Nothing is sent automatically. Your date
+        Opens your messages app. Nothing is sent automatically. Your date
         and time are confirmed after our team replies.
       </small>
     </form>
