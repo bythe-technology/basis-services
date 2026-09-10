@@ -23,6 +23,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  keywords: [
+    "cleaning services Los Angeles",
+    "home cleaning Los Angeles",
+    "deep cleaning Los Angeles",
+    "Airbnb cleaning Los Angeles",
+    "commercial cleaning Greater Los Angeles",
+  ],
 };
 
 export default function ServicesPage() {
