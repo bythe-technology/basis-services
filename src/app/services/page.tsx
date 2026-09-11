@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { CleaningChecklists } from "@/components/cleaning-checklists";
 import { ServiceIcon } from "@/components/service-icon";
 import { contact, services } from "@/data/site";
+import { buildSmsUrl } from "@/utils/sms";
 
 export const metadata: Metadata = {
   title: "Cleaning Services in Los Angeles",
@@ -111,17 +112,10 @@ export default function ServicesPage() {
                     </ul>
                     <a
                       className="textLink"
-                      href={
-                        contact.sms +
-                        "?text=" +
-                        encodeURIComponent(
-                          "Hi Basis Services! I'd like a quote for " +
-                            service.title +
-                            ".",
-                        )
-                      }
-                      target="_blank"
-                      rel="noreferrer"
+                      href={buildSmsUrl(
+                        contact.phone,
+                        `Hi Basis Services! I'd like a quote for ${service.title}.`,
+                      )}
                     >
                       <MessageSquareText /> Request this service <ArrowRight />
                     </a>
@@ -143,7 +137,10 @@ export default function ServicesPage() {
             </p>
             <a
               className="button primaryButton"
-              href={contact.sms}
+              href={buildSmsUrl(
+                contact.phone,
+                "Hi Basis Services! I'd like help choosing the right cleaning service.",
+              )}
             >
               <MessageSquareText /> Text Basis Services
             </a>

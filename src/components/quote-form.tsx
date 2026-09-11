@@ -12,6 +12,7 @@ import {
   type QuoteErrors,
   type QuoteFields,
 } from "@/utils/quote";
+import { buildSmsUrl } from "@/utils/sms";
 
 function Field({
   name,
@@ -41,6 +42,8 @@ export function QuoteForm() {
   const [property, setProperty] = useState("");
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [readyUrl, setReadyUrl] = useState("");
+  const [readyMessage, setReadyMessage] = useState("");
+  const [copied, setCopied] = useState(false);
   const optional = useRef<HTMLDetailsElement>(null);
   const props = (name: keyof QuoteFields) => ({
     id: name,
@@ -84,19 +87,23 @@ export function QuoteForm() {
       });
       return;
     }
-    const url =
-      contact.sms +
-      "?text=" +
-      encodeURIComponent(buildQuoteMessage(fields));
+    const message = buildQuoteMessage(fields);
+    const url = buildSmsUrl(contact.phone, message);
+    setReadyMessage(message);
     setReadyUrl(url);
-    window.open(url, "_blank", "noopener,noreferrer");
+    setCopied(false);
+    window.location.href = url;
   }
   return (
     <form
       className="quoteForm"
       noValidate
       onSubmit={submit}
-      onChange={() => setReadyUrl("")}
+      onChange={() => {
+        setReadyUrl("");
+        setReadyMessage("");
+        setCopied(false);
+      }}
     >
       <div className="formTop">
         <span>Free estimate</span>
@@ -233,6 +240,15 @@ export function QuoteForm() {
           <a href={readyUrl} target="_blank" rel="noreferrer">
             Open prepared message in Messages <ArrowUpRight />
           </a>
+          <button
+            type="button"
+            onClick={async () => {
+              await navigator.clipboard.writeText(readyMessage);
+              setCopied(true);
+            }}
+          >
+            {copied ? "Message copied" : "Copy message instead"}
+          </button>
         </div>
       )}
       <small>

@@ -15,6 +15,7 @@ import { contact, serviceAreas, services } from "@/data/site";
 import { GalleryCarousel } from "@/components/gallery-carousel";
 import { QuoteForm } from "@/components/quote-form";
 import { ServiceIcon } from "@/components/service-icon";
+import { buildSmsUrl } from "@/utils/sms";
 
 export function Hero() {
   return (
@@ -34,7 +35,10 @@ export function Hero() {
           </a>
           <a
             className="button secondaryButton"
-            href={contact.sms}
+            href={buildSmsUrl(
+              contact.phone,
+              "Hi Basis Services! I'd like a free cleaning quote.",
+            )}
           >
             <MessageSquareText /> Text us about your space
           </a>
@@ -50,7 +54,7 @@ export function Hero() {
           </div>
           <div>
             <strong>Greater LA</strong>
-            <span>11 local service areas</span>
+            <span>{serviceAreas.length} local service areas</span>
           </div>
         </div>
       </div>
@@ -362,7 +366,12 @@ export function QuoteSection() {
             availability with you personally.
           </p>
           <div className="directContacts">
-            <a href={contact.sms}>
+            <a
+              href={buildSmsUrl(
+                contact.phone,
+                "Hi Basis Services! I'd like to learn more about your cleaning services.",
+              )}
+            >
               <MessageSquareText />
               <span>
                 <small>Text message</small>

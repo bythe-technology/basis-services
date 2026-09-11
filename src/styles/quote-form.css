@@ -110,6 +110,17 @@
   margin-top: 10px;
   min-height: 44px;
 }
+.formSuccess button {
+  display: inline-flex;
+  min-height: 44px;
+  margin-left: 18px;
+  border: 0;
+  background: transparent;
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .formSuccess svg {
   width: 18px;
 }

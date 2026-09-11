@@ -9,7 +9,7 @@ Official landing page for Basis Services, a professional cleaning company servin
 - Fifteen authentic Basis Services work photos and official brand logo
 - Accessible, touch-friendly autoplay gallery
 - Representative before-and-after section
-- WhatsApp quote flow with prefilled customer details
+- SMS quote flow with prefilled customer details and a copy fallback
 - Phone, email, Instagram, and service-area contact details
 - SEO and social-sharing metadata
 

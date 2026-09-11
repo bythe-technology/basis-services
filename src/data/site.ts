@@ -12,7 +12,6 @@ export const contact = {
   phoneDisplay: "+1 (562) 578-3263",
   phone: "+15625783263",
   whatsapp: "https://wa.me/15625783263",
-  sms: "sms:+15625783263",
   email: "basisserv@gmail.com",
   instagram: "https://www.instagram.com/basisservicess/",
   instagramHandle: "@basisservicess",
@@ -21,7 +20,7 @@ export const contact = {
 
 export const serviceAreas = [
   "Los Angeles", "Malibu", "Culver City", "Marina del Rey", "Pasadena", "Encino",
-  "Van Nuys", "Downtown LA", "Santa Monica", "Venice", "Long Beach",
+  "Van Nuys", "Downtown LA", "Hollywood", "Santa Monica", "Venice", "Long Beach",
 ] as const;
 
 export const services: readonly Service[] = [
