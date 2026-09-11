@@ -1,6 +1,7 @@
 "use client";
 
 import type { ComponentPropsWithoutRef, MouseEvent } from "react";
+import { useRouter } from "next/navigation";
 import {
   buildSmsUrl,
   detectSmsPlatform,
@@ -13,6 +14,7 @@ type SmsLinkProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & {
 };
 
 export function SmsLink({ phone, message, onClick, ...props }: SmsLinkProps) {
+  const router = useRouter();
   const fallbackHref = buildSmsUrl(phone, message);
 
   const handleClick = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -23,7 +25,7 @@ export function SmsLink({ phone, message, onClick, ...props }: SmsLinkProps) {
       event.preventDefault();
       const quoteSection = document.getElementById("quote");
       if (quoteSection) quoteSection.scrollIntoView({ behavior: "smooth" });
-      else window.location.assign("/#quote");
+      else router.push("/#quote");
       return;
     }
 
