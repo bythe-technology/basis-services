@@ -266,7 +266,7 @@ export function WorkDetails() {
 const steps = [
   {
     title: "Share your space",
-    copy: "Tell us what you need, where you are and when you would like service.",
+    copy: "Tell us your needs, where you are located and when you'd like our cleaning services.",
     Icon: CalendarDays,
   },
   {
