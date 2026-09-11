@@ -1,5 +1,6 @@
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { TransformationVideos } from "@/components/transformation-videos";
 import {
   Areas,
   FeaturedServices,
@@ -19,6 +20,7 @@ export default function Home() {
         <Hero />
         <FeaturedServices />
         <WorkGallery />
+        <TransformationVideos />
         <WhyBasis />
         <WorkDetails />
         <Process />
