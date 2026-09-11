@@ -15,7 +15,7 @@ import { contact, serviceAreas, services } from "@/data/site";
 import { GalleryCarousel } from "@/components/gallery-carousel";
 import { QuoteForm } from "@/components/quote-form";
 import { ServiceIcon } from "@/components/service-icon";
-import { buildSmsUrl } from "@/utils/sms";
+import { SmsLink } from "@/components/sms-link";
 
 export function Hero() {
   return (
@@ -33,15 +33,13 @@ export function Hero() {
           <a className="button primaryButton" href="#quote">
             Get a free quote <ArrowRight />
           </a>
-          <a
+          <SmsLink
             className="button secondaryButton"
-            href={buildSmsUrl(
-              contact.phone,
-              "Hi Basis Services! I'd like a free cleaning quote.",
-            )}
+            phone={contact.phone}
+            message="Hi Basis Services! I'd like a free cleaning quote."
           >
             <MessageSquareText /> Text us about your space
-          </a>
+          </SmsLink>
         </div>
         <div className="heroFacts">
           <div>
@@ -366,18 +364,16 @@ export function QuoteSection() {
             availability with you personally.
           </p>
           <div className="directContacts">
-            <a
-              href={buildSmsUrl(
-                contact.phone,
-                "Hi Basis Services! I'd like to learn more about your cleaning services.",
-              )}
+            <SmsLink
+              phone={contact.phone}
+              message="Hi Basis Services! I'd like to learn more about your cleaning services."
             >
               <MessageSquareText />
               <span>
                 <small>Text message</small>
                 {contact.phoneDisplay}
               </span>
-            </a>
+            </SmsLink>
             <a href={contact.instagram} target="_blank" rel="noreferrer">
               <FaInstagram />
               <span>

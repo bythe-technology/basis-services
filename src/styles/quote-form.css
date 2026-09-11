@@ -73,6 +73,20 @@
   color: #9a2924;
   margin-top: 6px;
 }
+.formErrorSummary {
+  padding: 14px 16px;
+  border: 1px solid #c77770;
+  border-radius: 12px;
+  background: #fff2f0;
+  color: #76221e;
+}
+.formErrorSummary strong {
+  display: block;
+  margin-bottom: 3px;
+}
+.formErrorSummary p {
+  font-size: 0.84rem;
+}
 .optionalFields {
   border-top: 1px solid var(--line);
   padding-top: 8px;
@@ -96,33 +110,86 @@
   font-size: 0.8rem;
 }
 .formSuccess {
-  padding: 16px;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
   background: var(--sage);
-  border-radius: 12px;
+  border: 1px solid #a9bd9d;
+  border-radius: 16px;
   color: var(--green);
   font-size: 0.9rem;
 }
-.formSuccess a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: underline;
-  margin-top: 10px;
-  min-height: 44px;
+.formSuccess:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
 }
-.formSuccess button {
-  display: inline-flex;
-  min-height: 44px;
-  margin-left: 18px;
-  border: 0;
+.formSuccessHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.formSuccessHeading > span {
+  display: grid;
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+}
+.formSuccessHeading svg {
+  width: 19px;
+}
+.formSuccessHeading strong {
+  display: block;
+  font-size: 1rem;
+}
+.formSuccessHeading p {
+  margin-top: 2px;
+  color: #465c48;
+  font-size: 0.82rem;
+}
+.formSuccess label {
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+.quoteForm .messagePreview {
+  min-height: 190px;
+  border-color: #8ca180;
+  background: #fffdf8;
+  line-height: 1.5;
+}
+.formSuccessActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.formSuccessActions .button {
+  min-height: 46px;
+  width: auto;
+}
+.formSuccessActions .copyButton {
+  border: 1px solid var(--green);
   background: transparent;
   color: var(--green);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 4px;
 }
-.formSuccess svg {
-  width: 18px;
+.formSuccessActions .copyButton:hover {
+  background: rgba(54, 84, 58, 0.08);
+}
+.desktopSmsHelp {
+  color: #465c48;
+  font-size: 0.84rem;
+}
+.desktopSmsHelp a {
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.copyError {
+  color: #76221e;
+  font-size: 0.82rem;
 }
 .decoration {
   width: 160px;

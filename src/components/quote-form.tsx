@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, type FormEvent, type ReactNode } from "react";
-import { ArrowUpRight, MessageSquareText } from "lucide-react";
+import { ArrowUpRight, Check, Copy, MessageSquareText } from "lucide-react";
 import { contact, services } from "@/data/site";
 import {
   buildQuoteMessage,
@@ -12,7 +12,30 @@ import {
   type QuoteErrors,
   type QuoteFields,
 } from "@/utils/quote";
-import { buildSmsUrl } from "@/utils/sms";
+import {
+  buildSmsUrl,
+  detectSmsPlatform,
+  isMobileSmsDevice,
+} from "@/utils/sms";
+
+type CopyStatus = "idle" | "copied" | "failed";
+
+async function copyMessage(message: string): Promise<boolean> {
+  try {
+    await navigator.clipboard.writeText(message);
+    return true;
+  } catch {
+    const textarea = document.createElement("textarea");
+    textarea.value = message;
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand("copy");
+    textarea.remove();
+    return copied;
+  }
+}
 
 function Field({
   name,
@@ -43,8 +66,10 @@ export function QuoteForm() {
   const [errors, setErrors] = useState<QuoteErrors>({});
   const [readyUrl, setReadyUrl] = useState("");
   const [readyMessage, setReadyMessage] = useState("");
-  const [copied, setCopied] = useState(false);
+  const [copyStatus, setCopyStatus] = useState<CopyStatus>("idle");
+  const [mobileSms, setMobileSms] = useState(false);
   const optional = useRef<HTMLDetailsElement>(null);
+  const result = useRef<HTMLDivElement>(null);
   const props = (name: keyof QuoteFields) => ({
     id: name,
     name,
@@ -88,21 +113,43 @@ export function QuoteForm() {
       return;
     }
     const message = buildQuoteMessage(fields);
-    const url = buildSmsUrl(contact.phone, message);
+    const platform = detectSmsPlatform(
+      navigator.userAgent,
+      navigator.maxTouchPoints,
+    );
+    const url = buildSmsUrl(contact.phone, message, platform);
     setReadyMessage(message);
     setReadyUrl(url);
-    setCopied(false);
-    window.location.href = url;
+    setMobileSms(isMobileSmsDevice(navigator.userAgent));
+    setCopyStatus("idle");
+    requestAnimationFrame(() => result.current?.focus());
   }
+
+  const resetPreparedMessage = () => {
+    setReadyUrl("");
+    setReadyMessage("");
+    setCopyStatus("idle");
+  };
+
+  const handleCopy = async () => {
+    const copied = await copyMessage(readyMessage);
+    setCopyStatus(copied ? "copied" : "failed");
+  };
   return (
     <form
       className="quoteForm"
       noValidate
       onSubmit={submit}
-      onChange={() => {
-        setReadyUrl("");
-        setReadyMessage("");
-        setCopied(false);
+      onChange={(event) => {
+        resetPreparedMessage();
+        const fieldName = event.target.name as keyof QuoteFields;
+        if (fieldName && errors[fieldName]) {
+          setErrors((current) => {
+            const next = { ...current };
+            delete next[fieldName];
+            return next;
+          });
+        }
       }}
     >
       <div className="formTop">
@@ -110,6 +157,12 @@ export function QuoteForm() {
         <h3>A little about your space.</h3>
         <p>Start with the essentials. We’ll work out the details together.</p>
       </div>
+      {Object.keys(errors).length > 0 && (
+        <div className="formErrorSummary" role="alert" tabIndex={-1}>
+          <strong>Please review the highlighted fields.</strong>
+          <p>Your information is still here. Correct the items below and try again.</p>
+        </div>
+      )}
       <fieldset>
         <legend>01 — Your contact details</legend>
         <div className="formRow">
@@ -232,28 +285,50 @@ export function QuoteForm() {
         <MessageSquareText /> Prepare my text request <ArrowUpRight />
       </button>
       {readyUrl && (
-        <div className="formSuccess" role="status">
-          <p>
-            Your message is prepared. Please press Send in your messages app to
-            submit your request.
-          </p>
-          <a href={readyUrl} target="_blank" rel="noreferrer">
-            Open prepared message in Messages <ArrowUpRight />
-          </a>
-          <button
-            type="button"
-            onClick={async () => {
-              await navigator.clipboard.writeText(readyMessage);
-              setCopied(true);
-            }}
-          >
-            {copied ? "Message copied" : "Copy message instead"}
-          </button>
+        <div className="formSuccess" role="status" tabIndex={-1} ref={result}>
+          <div className="formSuccessHeading">
+            <span><Check aria-hidden="true" /></span>
+            <div>
+              <strong>Your text is ready.</strong>
+              <p>Review it below, then choose how you want to continue.</p>
+            </div>
+          </div>
+          <label htmlFor="prepared-message">Prepared message</label>
+          <textarea
+            id="prepared-message"
+            className="messagePreview"
+            value={readyMessage}
+            readOnly
+            rows={9}
+            onFocus={(event) => event.currentTarget.select()}
+          />
+          <div className="formSuccessActions">
+            {mobileSms && (
+              <a className="button primaryButton" href={readyUrl}>
+                <MessageSquareText /> Open in Messages <ArrowUpRight />
+              </a>
+            )}
+            <button className="button copyButton" type="button" onClick={handleCopy}>
+              {copyStatus === "copied" ? <Check /> : <Copy />}
+              {copyStatus === "copied" ? "Message copied" : "Copy message"}
+            </button>
+          </div>
+          {!mobileSms && (
+            <p className="desktopSmsHelp">
+              On this computer, copy the message and text it to{" "}
+              <a href={`tel:${contact.phone}`}>{contact.phoneDisplay}</a> from your phone.
+            </p>
+          )}
+          {copyStatus === "failed" && (
+            <p className="copyError" role="alert">
+              Automatic copying was blocked. Select the message above and copy it manually.
+            </p>
+          )}
         </div>
       )}
       <small>
-        Opens your messages app. Nothing is sent automatically. Your date
-        and time are confirmed after our team replies.
+        We prepare the message here first. On mobile, you can then open it in
+        Messages. Nothing is sent automatically.
       </small>
     </form>
   );
