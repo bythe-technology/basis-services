@@ -249,3 +249,296 @@
   margin: 0 auto 28px;
   color: var(--muted);
 }
+
+.serviceDetailHero {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px;
+  align-items: center;
+  padding-top: 168px;
+  padding-bottom: 72px;
+}
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 34px;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+.breadcrumbs a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.serviceDetailTitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.serviceDetailTitle .kicker {
+  margin-bottom: 0;
+}
+.serviceDetailTitle .serviceIcon {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+}
+.serviceDetailHero h1 {
+  margin: 22px 0;
+}
+.serviceDetailLead {
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+.serviceDetailPhoto {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border-radius: 100px 100px 24px 24px;
+  background: var(--sage);
+}
+.serviceDetailPhoto img {
+  object-fit: cover;
+}
+.serviceDetailBody,
+.serviceFaq {
+  background: var(--paper);
+}
+.serviceDetailGrid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 72px;
+  align-items: start;
+}
+.serviceProse h2 {
+  margin-bottom: 28px;
+}
+.serviceProse > p:not(.kicker) {
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 1.02rem;
+}
+.serviceScope {
+  padding: 32px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--cream);
+  box-shadow: var(--shadow);
+}
+.serviceScope h2 {
+  margin-bottom: 18px;
+  font-size: 2rem;
+}
+.serviceScope > p {
+  padding-bottom: 20px;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.serviceScope h3 {
+  margin: 22px 0 14px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.9rem;
+}
+.serviceScope ul {
+  display: grid;
+  gap: 11px;
+  list-style: none;
+}
+.serviceScope li {
+  display: flex;
+  gap: 10px;
+  color: var(--muted);
+}
+.serviceScope li svg {
+  width: 18px;
+  color: var(--green);
+}
+.serviceBenefits,
+.areaServices {
+  background: var(--sage);
+}
+.serviceBenefits h2,
+.relatedServices h2,
+.areaServices h2 {
+  margin-bottom: 36px;
+}
+.serviceBenefitGrid,
+.relatedServiceGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+.serviceBenefitGrid article,
+.relatedServiceGrid > a {
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--paper);
+}
+.serviceBenefitGrid span {
+  color: var(--gold);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.serviceBenefitGrid h3 {
+  margin-top: 32px;
+  font-size: 1.55rem;
+}
+.faqList {
+  display: grid;
+  gap: 12px;
+}
+.faqList details {
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--cream);
+}
+.faqList summary {
+  font-weight: 700;
+  color: var(--green);
+}
+.faqList p {
+  padding-top: 14px;
+  color: var(--muted);
+}
+.serviceRequest {
+  text-align: center;
+  background: var(--green);
+  color: white;
+}
+.serviceRequest .kicker {
+  color: var(--lime);
+}
+.serviceRequest h2 {
+  margin-bottom: 18px;
+}
+.serviceRequest p {
+  max-width: 680px;
+  margin: 0 auto 26px;
+  color: #e2e9df;
+}
+.serviceRequest .primaryButton {
+  color: var(--ink);
+  background: var(--lime);
+}
+.relatedServices {
+  background: var(--cream);
+}
+.relatedServiceGrid > a {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+.relatedServiceGrid > a:hover {
+  border-color: var(--green);
+  transform: translateY(-3px);
+}
+.relatedServiceGrid .serviceIcon {
+  margin-bottom: 22px;
+}
+.relatedServiceGrid h3 {
+  font-size: 1.65rem;
+}
+.relatedServiceGrid p {
+  margin: 10px 0 22px;
+  color: var(--muted);
+}
+.relatedServiceGrid span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--green);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+.relatedServiceGrid span svg {
+  width: 16px;
+}
+.areaPageHero {
+  max-width: 960px;
+  padding-top: 190px;
+  padding-bottom: 100px;
+  text-align: center;
+}
+.areaPageHero p:not(.kicker) {
+  max-width: 720px;
+  margin: 26px auto 30px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+.areaPage {
+  background: var(--paper);
+}
+.areaPageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.areaPageGrid article {
+  display: flex;
+  gap: 14px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--cream);
+}
+.areaPageGrid svg {
+  width: 20px;
+  flex-shrink: 0;
+  color: var(--green);
+}
+.areaPageGrid h3 {
+  font-size: 1.35rem;
+}
+.areaPageGrid p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+@media (max-width: 1023px) {
+  .serviceDetailHero,
+  .serviceDetailGrid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .serviceDetailPhoto {
+    min-height: 460px;
+  }
+  .serviceBenefitGrid,
+  .relatedServiceGrid,
+  .areaPageGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .serviceDetailHero {
+    gap: 32px;
+    padding-top: 132px;
+    padding-bottom: 56px;
+  }
+  .breadcrumbs {
+    margin-bottom: 24px;
+  }
+  .serviceDetailPhoto {
+    min-height: 360px;
+    border-radius: 60px 60px 20px 20px;
+  }
+  .serviceScope {
+    padding: 24px;
+  }
+  .serviceBenefitGrid,
+  .relatedServiceGrid,
+  .areaPageGrid {
+    grid-template-columns: 1fr;
+  }
+  .areaPageHero {
+    padding-top: 144px;
+    padding-bottom: 64px;
+    text-align: left;
+  }
+  .areaPageHero p:not(.kicker) {
+    margin-inline: 0;
+  }
+}

@@ -15,12 +15,12 @@ const display = Cormorant_Garamond({
   display: "swap",
 });
 const description =
-  "Professional home, Airbnb, hotel, office and deep cleaning across Greater Los Angeles. Request a free, personalized quote from Basis Services.";
+  "Los Angeles cleaning services for homes, Airbnb rentals, hotels and offices. Explore real Basis Services work and request a personalized estimate.";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://basisserv.com"),
   title: {
-    default: "Basis Services | Professional Cleaning in Los Angeles",
+    default: "Los Angeles Cleaning Services | Basis Services",
     template: "%s | Basis Services",
   },
   description,
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Basis Services | Professional Cleaning in Los Angeles",
+    title: "Los Angeles Cleaning Services | Basis Services",
     description,
     url: "/",
     siteName: "Basis Services",
@@ -69,7 +69,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Basis Services | Professional Cleaning in Los Angeles",
+    title: "Los Angeles Cleaning Services | Basis Services",
     description,
     images: ["/images/work-01.webp"],
   },

@@ -1,11 +1,12 @@
 import { contact, serviceAreas, services } from "@/data/site";
+import { JsonLd } from "@/components/json-ld";
 
 export function StructuredData() {
   const data = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "ProfessionalService",
+        "@type": "LocalBusiness",
         "@id": "https://basisserv.com/#business",
         name: "Basis Services",
         alternateName: "Basisserv",
@@ -18,6 +19,8 @@ export function StructuredData() {
         email: contact.email,
         foundingDate: "2022",
         serviceType: "Residential and commercial cleaning services",
+        knowsLanguage: ["English", "Portuguese"],
+        slogan: "Cleaning solutions that shine",
         areaServed: serviceAreas.map((name) => ({ "@type": "City", name })),
         sameAs: [contact.instagram],
         contactPoint: {
@@ -44,7 +47,7 @@ export function StructuredData() {
               "@type": "Service",
               name: service.title,
               description: service.description,
-              url: `https://basisserv.com/services#${service.slug}`,
+              url: `https://basisserv.com/services/${service.slug}`,
               provider: { "@id": "https://basisserv.com/#business" },
               areaServed: serviceAreas.map((name) => ({ "@type": "City", name })),
             },
@@ -61,7 +64,20 @@ export function StructuredData() {
         publisher: { "@id": "https://basisserv.com/#business" },
         inLanguage: "en-US",
       },
+      {
+        "@type": "WebPage",
+        "@id": "https://basisserv.com/#webpage",
+        url: "https://basisserv.com/",
+        name: "Los Angeles Cleaning Services | Basis Services",
+        isPartOf: { "@id": "https://basisserv.com/#website" },
+        about: { "@id": "https://basisserv.com/#business" },
+        primaryImageOfPage: {
+          "@type": "ImageObject",
+          url: "https://basisserv.com/images/work-01.webp",
+        },
+        inLanguage: "en-US",
+      },
     ],
   };
-  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, "\\u003c") }} />;
+  return <JsonLd data={data} />;
 }

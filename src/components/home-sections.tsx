@@ -96,7 +96,7 @@ export function FeaturedServices() {
               </div>
               <h3>{service.title}</h3>
               <p>{service.shortDescription}</p>
-              <Link className="textLink" href={"/services#" + service.slug}>
+              <Link className="textLink" href={"/services/" + service.slug}>
                 View details <ArrowRight />
               </Link>
             </article>
@@ -336,6 +336,9 @@ export function Areas() {
           <a className="button primaryButton" href="#quote">
             Check availability <ArrowRight />
           </a>
+          <Link className="textLink" href="/service-areas">
+            Explore all service areas <ArrowRight aria-hidden="true" />
+          </Link>
         </div>
         <div className="areaList">
           {serviceAreas.map((area) => (

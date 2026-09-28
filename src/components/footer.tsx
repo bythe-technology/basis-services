@@ -43,6 +43,7 @@ export function Footer() {
           <h3>Explore</h3>
           <Link href="/">Home</Link>
           <Link href="/services">All services</Link>
+          <Link href="/service-areas">Service areas</Link>
           <Link href="/#work">Our work</Link>
           <Link href="/#quote">Free quote</Link>
         </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { MessageSquareText } from "lucide-react";
 import { Footer } from "@/components/footer";
@@ -80,10 +81,10 @@ export default function ServicesPage() {
               aria-label="Choose a cleaning service"
             >
               {services.map((service) => (
-                <a href={"#" + service.slug} key={service.slug}>
+                <Link href={"/services/" + service.slug} key={service.slug}>
                   {service.title}
                   <ArrowRight aria-hidden="true" />
-                </a>
+                </Link>
               ))}
             </nav>
             <CleaningChecklists />
@@ -110,6 +111,9 @@ export default function ServicesPage() {
                         </li>
                       ))}
                     </ul>
+                    <Link className="textLink" href={`/services/${service.slug}`}>
+                      Explore {service.title} <ArrowRight aria-hidden="true" />
+                    </Link>
                     <SmsLink
                       className="textLink"
                       phone={contact.phone}
